@@ -27,7 +27,8 @@ const FormFields = props => (
                     numeralPositiveOnly: true
                 }}
                 onChange={props.handleParty}
-        />
+        /><br />
+        <button type='button' onClick={props.handleCalculate}>Calculate</button>
     </form>
 );
 
