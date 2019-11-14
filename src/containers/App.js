@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import '../styles/App.css';
 
 import FormFields from '../components/FormFields';
+import {
+  Container,
+  Row,
+  Col
+} from 'react-bootstrap';
 
 class App extends Component {
   state = {
@@ -40,17 +45,26 @@ class App extends Component {
 
   render() {
     return (
-      <div className='calculator-main'>
+      <Container>
         <h1>Tip Calculator</h1>
-        <FormFields billValue={this.state.billValue}
-                    handleBill={this.handleBill}
-                    tipValue={this.state.tipValue}
-                    handleTip={this.handleTip}
-                    handleParty={this.handleParty}
-                    handleCalculate={this.handleCalculate} />
-        <p>Tip: {this.state.tip ? `$${this.state.tip}` : ''}</p>
-        <p>Total: {this.state.total ? `$${this.state.total}` : ''}</p>
-      </div>
+        <Row>
+          <Col>
+            <FormFields billValue={this.state.billValue}
+                        handleBill={this.handleBill}
+                        tipValue={this.state.tipValue}
+                        handleTip={this.handleTip}
+                        handleParty={this.handleParty}
+                        handleCalculate={this.handleCalculate}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <p>Tip: {this.state.tip ? `$${this.state.tip}` : ''}</p>
+            <p>Total: {this.state.total ? `$${this.state.total}` : ''}</p>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

@@ -1,0 +1,11 @@
+.container {
+  margin: auto;
+  width: 25%;
+  border: 2px solid gray;
+  background: lightgray;
+}
+
+input, p {
+  width: 100%;
+  margin: 4px 0 4px 0;
+}
