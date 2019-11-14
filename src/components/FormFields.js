@@ -13,21 +13,27 @@ const FormFields = props => (
                     noImmediatePrefix: true,
                     rawValueTrimPrefix: true
                 }}
-                onChange={props.handleBill}
-        /><br />
-        <select name='tip' onChange={props.handleTip} defaultValue={props.tipValue}>
+                onChange={props.handleBill} />
+        <br />
+
+        <select name='tip' onChange={props.handleTip} value={props.tipValue}>
             <option value='0'>0</option>
-            <option value='.1'>10%</option>
-            <option value='.15'>15%</option>
-            <option value='.2'>20%</option>
-        </select><br />
+            <option value='0.1'>10%</option>
+            <option value='0.15'>15%</option>
+            <option value='0.2'>20%</option>
+        </select>
+        
+        <br />
+
         <Cleave placeholder='Party Size'
                 options={{
                     numeral: true,
                     numeralPositiveOnly: true
                 }}
-                onChange={props.handleParty}
-        /><br />
+                onChange={props.handleParty} />
+                
+        <br />
+
         <button type='button' onClick={props.handleCalculate}>Calculate</button>
     </form>
 );
