@@ -8,13 +8,16 @@ import {
   Col
 } from 'react-bootstrap';
 
+
+
 class App extends Component {
   state = {
     billValue: '',
     tipValue: '',
     tip: '',
     total: '',
-    partyValue: ''
+    partyValue: '',
+    theme: 'light-gray'
   };
 
   handleBill = e => {
@@ -22,7 +25,20 @@ class App extends Component {
   }
 
   handleTip = e => {
+    this.handleTheme(e.target.value);
     this.setState({ tipValue: parseFloat(e.target.value) });
+  }
+
+  handleTheme(tipAmt) {
+    const color = tipAmt > .15
+      ? 'green'
+      : tipAmt > .1
+      ? 'yellow'
+      : tipAmt > 0
+      ? 'red'
+      : 'light-gray';
+
+    this.setState({ theme: color });
   }
 
   handleParty = e => {
@@ -44,27 +60,33 @@ class App extends Component {
   }
 
   render() {
+    const styles = {
+      color: this.state.theme
+    };
+
     return (
-      <Container>
-        <h1>Tip Calculator</h1>
-        <Row>
-          <Col>
-            <FormFields billValue={this.state.billValue}
-                        handleBill={this.handleBill}
-                        tipValue={this.state.tipValue}
-                        handleTip={this.handleTip}
-                        handleParty={this.handleParty}
-                        handleCalculate={this.handleCalculate}
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <p>Tip: {this.state.tip ? `$${this.state.tip}` : ''}</p>
-            <p>Total: {this.state.total ? `$${this.state.total}` : ''}</p>
-          </Col>
-        </Row>
-      </Container>
+      <div style={styles}>
+        <Container>
+          <h1>Tip Calculator</h1>
+          <Row>
+            <Col>
+              <FormFields billValue={this.state.billValue}
+                          handleBill={this.handleBill}
+                          tipValue={this.state.tipValue}
+                          handleTip={this.handleTip}
+                          handleParty={this.handleParty}
+                          handleCalculate={this.handleCalculate}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <p>Tip: {this.state.tip ? `$${this.state.tip}` : ''}</p>
+              <p>Total: {this.state.total ? `$${this.state.total}` : ''}</p>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     );
   }
 }
