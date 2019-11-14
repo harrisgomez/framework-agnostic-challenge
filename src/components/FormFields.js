@@ -1,7 +1,7 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 
 import Cleave from 'cleave.js/react';
+import { ButtonToolbar, Button } from 'react-bootstrap';
 
 const FormFields = props => (
     <form>
@@ -37,8 +37,10 @@ const FormFields = props => (
         />
 
         <br />
-
-        <button type='button' onClick={props.handleCalculate}>Calculate</button>
+        
+        <ButtonToolbar>
+            <Button variant='primary' type='button' onClick={props.handleCalculate}>Calculate</Button>
+        </ButtonToolbar>
     </form>
 );
 
