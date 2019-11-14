@@ -25,11 +25,16 @@ class App extends Component {
   }
 
   handleCalculate = () => {
-    const tip = this.state.billValue * this.state.tipValue;
+    const tip = this.state.partyValue
+      ? `${(this.state.billValue * this.state.tipValue / this.state.partyValue).toFixed(2)} each`
+      : (this.state.billValue * this.state.tipValue).toFixed(2);
+    const total = this.state.partyValue
+      ? `${((this.state.billValue + parseFloat(tip)) / this.state.partyValue).toFixed(2)} each`
+      : (this.state.billValue + parseFloat(tip)).toFixed(2);
 
     this.setState({
-      tip: tip.toFixed(2),
-      total: (this.state.billValue + tip).toFixed(2)
+      tip: tip,
+      total: total
     });
   }
 
