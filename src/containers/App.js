@@ -8,8 +8,6 @@ import {
   Col
 } from 'react-bootstrap';
 
-
-
 class App extends Component {
   state = {
     billValue: '',
